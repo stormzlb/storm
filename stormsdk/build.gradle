@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    annotationProcessor 'io.realm:realm-gradle-plugin:2.1.1'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.3.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    //retrofit基于okhttp的一个新的请求框架
+    //compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    //compile 'com.squareup.retrofit2:converter-gson:2.0.2'//与app的gson会产生冲突，
+    //compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+
+    //RxJava/android相关
+    //compile 'io.reactivex:rxandroid:1.2.0'
+    //compile 'io.reactivex:rxjava:1.1.4'
+    //compile 'io.reactivex:rxjava-math:1.0.0'
+    //compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
+    //compile 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+}
