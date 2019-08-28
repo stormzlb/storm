@@ -1,6 +1,7 @@
 package com.zlb.sdk.okhttp;
 
 import com.zlb.sdk.okhttp.https.HttpsUtils;
+import com.zlb.sdk.okhttp.listener.DisposeDataHandle;
 import com.zlb.sdk.okhttp.response.CommonJsonCallback;
 
 import java.io.IOException;
@@ -49,18 +50,15 @@ public class CommonOkHttpClient {
     }
 
     /**
-     * 发送具体的http/https请求
+     * 通过构造好的Request,Callback去发送请求
      *
      * @param request
-     * @param commonJsonCallback
-     * @return Call
      */
-    public static Call sendRequest(Request request, CommonJsonCallback commonJsonCallback) {
+    public static Call get(Request request, DisposeDataHandle handle) {
         Call call = mOkHttpClient.newCall(request);
-        call.enqueue(commonJsonCallback);
+        call.enqueue(new CommonJsonCallback(handle));
         return call;
     }
-
 }
 
 

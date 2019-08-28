@@ -1,6 +1,7 @@
 package com.zlb.component.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,11 +16,9 @@ import com.zlb.component.activity.base.BaseActivity;
 import com.zlb.component.fragment.HomeFragment;
 import com.zlb.component.fragment.MessageFragment;
 import com.zlb.component.fragment.MineFragment;
-import com.zlb.sdk.okhttp.CommonOkHttpClient;
-import com.zlb.sdk.okhttp.listener.DisposeDataHandle;
+import com.zlb.component.module.recommand.BaseReCommandModel;
+import com.zlb.component.network.http.RequestCenter;
 import com.zlb.sdk.okhttp.listener.DisposeDataListener;
-import com.zlb.sdk.okhttp.request.CommonRequest;
-import com.zlb.sdk.okhttp.response.CommonJsonCallback;
 
 /**
  * @author zlb
@@ -73,6 +72,21 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mMineView = (TextView) findViewById(R.id.mine_image_view);
 
         mHomeView.setBackgroundResource(R.drawable.comui_tab_home_selected);
+
+
+        RequestCenter.requestReCommandData(new DisposeDataListener() {
+            @Override
+            public void onSuccess(Object responseObj) {
+                BaseReCommandModel mRecommandData = (BaseReCommandModel) responseObj;
+            }
+
+            @Override
+            public void onFailure(Object reasonObj) {
+                Log.d("zhu", "onFailure=" + reasonObj.toString());
+            }
+        });
+
+
     }
 
     private void hideFragment(Fragment fragment, FragmentTransaction ft) {
