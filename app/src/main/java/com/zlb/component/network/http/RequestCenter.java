@@ -26,6 +26,10 @@ public class RequestCenter {
         RequestCenter.postRequest(HttpConstants.HOME_RECOMMAND, null, listener, BaseReCommandModel.class);
     }
 
+    public static void zhu(DisposeDataListener dataListener){
+
+    }
+
     /**
      * 用户登陆请求
      *

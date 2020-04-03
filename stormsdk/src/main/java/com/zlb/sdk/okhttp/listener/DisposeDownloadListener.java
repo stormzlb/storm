@@ -5,5 +5,5 @@ package com.zlb.sdk.okhttp.listener;
  * @function 监听下载进度
  */
 public interface DisposeDownloadListener extends DisposeDataListener {
-	public void onProgress(int progrss);
+	 void onProgress(int progrss);
 }

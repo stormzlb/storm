@@ -3,6 +3,8 @@ package com.zlb.sdk.db.realm;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.Map;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -12,6 +14,15 @@ import io.realm.RealmConfiguration;
  * @function 数据库管理类
  */
 public class RealmManager {
+
+    public static Map addMap(Map map, Object[][] objects) {
+
+        for (int i = 0; i < objects.length; i++) {
+            map.put(objects[i][0], objects[i][1]);
+        }
+        return map;
+    }
+
 
     private static final String DB_NAME = "sdk.realm";
 

@@ -41,6 +41,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private TextView mMessageView;
     private TextView mMineView;
 
+    public final static String[][] testData1 = {
+            {"Happy", "Cheerful disposition"},
+            {"Sleepy", "Prefers dark, quiet places"},
+            {"Grumpy", "Needs to work on attitude"},
+            {"Doc", "Fantasizes about advanced degree"},
+            {"Dopey", "'A' for effort"},
+            {"Sneezy", "Struggles with allergies"}};
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +93,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 Log.d("zhu", "onFailure=" + reasonObj.toString());
             }
         });
+
+      //  RealmManager.addMap(new HashMap(),testData1);
 
 
     }
